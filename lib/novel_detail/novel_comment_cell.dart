@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class NovelCommentCell extends StatelessWidget {
   final NovelComment comment;

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
 
-class _DrawProgress extends CustomPainter {
+class _DrawProgress extends CustomPainter  {
   final Color color;
   final double radius;
-  double angle;
-  AnimationController animation;
+  double angle = 0;
+  late AnimationController animation;
 
-  Paint circleFillPaint;
-  Paint progressPaint;
-  Rect rect;
+  late Paint circleFillPaint;
+  late Paint progressPaint;
+  Rect rect = Rect.zero;
 
-  _DrawProgress(this.color, this.radius, {this.angle, this.animation}) {
+  _DrawProgress(this.color, this.radius, {double? angle, AnimationController? animation}) {
     circleFillPaint = new Paint();
     circleFillPaint.color = Colors.white;
     circleFillPaint.style = PaintingStyle.fill;
@@ -35,7 +35,7 @@ class _DrawProgress extends CustomPainter {
     Offset center = new Offset(x, y);
     canvas.drawCircle(center, radius - 2, circleFillPaint);
     rect = Rect.fromCircle(center: center, radius: radius);
-    angle = angle * (-1);
+    angle = (angle * (-1));
     double startAngle = -math.pi / 2;
     double sweepAngle = math.pi * angle / 180;
     //canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
@@ -64,9 +64,9 @@ class SkipDownTimeProgress extends StatefulWidget {
     this.radius,
     this.duration,
     this.size, {
-    Key key,
+    Key? key,
     this.skipText = "跳过",
-    this.clickListener,
+    required this.clickListener,
   }) : super(key: key);
 
   @override
@@ -77,7 +77,7 @@ class SkipDownTimeProgress extends StatefulWidget {
 
 class _SkipDownTimeProgressState extends State<SkipDownTimeProgress>
     with TickerProviderStateMixin {
-  AnimationController animationController;
+  AnimationController? animationController;
   double curAngle = 360.0;
 
   @override
@@ -85,7 +85,7 @@ class _SkipDownTimeProgressState extends State<SkipDownTimeProgress>
     super.initState();
     animationController =
         new AnimationController(vsync: this, duration: widget.duration);
-    animationController.addListener(_change);
+    animationController!.addListener(_change);
     _doAnimation();
   }
 
@@ -97,7 +97,7 @@ class _SkipDownTimeProgressState extends State<SkipDownTimeProgress>
   @override
   void dispose() {
     super.dispose();
-    animationController.dispose();
+    animationController!.dispose();
   }
 
   void _onSkipClick() {
@@ -109,7 +109,7 @@ class _SkipDownTimeProgressState extends State<SkipDownTimeProgress>
   void _doAnimation() async {
     Future.delayed(new Duration(milliseconds: 50), () {
       if (mounted) {
-        animationController.forward().orCancel;
+        animationController!.forward().orCancel;
       } else {
         _doAnimation();
       }
@@ -119,7 +119,7 @@ class _SkipDownTimeProgressState extends State<SkipDownTimeProgress>
   void _change() {
     print('ange == $animationController.value');
     double ange =
-        double.parse(((animationController.value * 360) ~/ 1).toString());
+        double.parse(((animationController!.value * 360) ~/ 1).toString());
 
     if (this.mounted) {
       setState(() {

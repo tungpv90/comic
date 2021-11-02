@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class ComicDetailOverViewView extends StatelessWidget {
   final ComicOverview comicOverview;

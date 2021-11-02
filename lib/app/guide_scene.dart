@@ -1,8 +1,8 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/app/root_scene.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/app/root_scene.dart';
+import 'package:comic/public.dart';
 
 /// 引导页
 class GuideScene extends StatefulWidget {

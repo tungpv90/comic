@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:tianyue/utility/screen.dart';
+import 'package:comic/utility/screen.dart';
 
 afterLayout(VoidCallback callback) {
-  WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
+  WidgetsBinding.instance!.addPostFrameCallback((Duration timeStamp) {
     callback();
   });
 }

@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/app/ty_color.dart';
+import 'package:comic/app/ty_color.dart';
 
 import 'chapter.dart';
 
 class Novel {
-  String id;
-  String name;
-  String imgUrl;
-  String firstChapter;
-  Chapter lastChapter;
-  String author;
-  double price;
-  double score;
-  String type;
-  String introduction;
-  int chapterCount;
-  int recommendCount;
-  int commentCount;
-  int firstArticleId;
+  String id = '';
+  String name = '';
+  String imgUrl = '';
+  String firstChapter = '';
+  late Chapter lastChapter;
+  String author = '';
+  double price = 0.0;
+  double score = 0.0;
+  String type = '';
+  String introduction = '';
+  int chapterCount = 0;
+  int recommendCount = 0;
+  int commentCount = 0;
+  int firstArticleId = -1;
 
-  List<String> roles;
-  String status;
-  double wordCount;
-  List<String> tags;
-  bool isLimitedFree;
+  late List<String> roles;
+  String status = '';
+  double wordCount = 0;
+  late List<String> tags;
+  bool isLimitedFree = false;
 
   Novel.fromJson(Map data) {
     id = data['bid'];

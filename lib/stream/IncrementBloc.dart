@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:tianyue/stream/BlocBase.dart';
+import 'package:comic/stream/BlocBase.dart';
 
 class IncrementBloc implements BlocBase {
-  int _counter;
+  late int _counter;
 
   // 处理counter的stream
   StreamController<int> _counterController = StreamController<int>();

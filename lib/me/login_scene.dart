@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 import 'code_button.dart';
 
@@ -14,7 +14,7 @@ class LoginSceneState extends State {
   TextEditingController phoneEditor = TextEditingController();
   TextEditingController codeEditor = TextEditingController();
   int coldDownSeconds = 0;
-  Timer timer;
+  late Timer timer;
 
   fetchSmsCode() async {
     if (phoneEditor.text.length == 0) {

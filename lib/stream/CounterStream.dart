@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:tianyue/stream/stream_base.dart';
+import 'package:comic/stream/stream_base.dart';
 
 class CounterStream extends StreamBase {
   var _controller = StreamController<int>();

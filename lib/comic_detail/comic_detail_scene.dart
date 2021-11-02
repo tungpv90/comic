@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tianyue/comic_detail/comic_detail_overview_view.dart';
-import 'package:tianyue/comic_detail/comic_detail_tab_container.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/comic_detail/comic_detail_overview_view.dart';
+import 'package:comic/comic_detail/comic_detail_tab_container.dart';
+import 'package:comic/public.dart';
 import 'dart:math' as math;
 
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class ComicDetailScene extends StatefulWidget {
   final String url;
@@ -25,13 +25,13 @@ class ComicDetailState extends State<ComicDetailScene>
   bool isOverviewDataReady = false;
 
   /// 顶部介绍
-  ComicOverview comicOverview;
+  ComicOverview? comicOverview;
 
   /// 详情
-  ComicDetail comicDetail;
+  ComicDetail? comicDetail;
 
   /// 目录
-  ComicChapter comicChapter;
+  ComicChapter? comicChapter;
 
   /// 评论
   List<ComicComment> commentList = [];
@@ -40,7 +40,7 @@ class ComicDetailState extends State<ComicDetailScene>
 
   var width = Screen.width;
 
-  TabController _tabController;
+  late TabController _tabController;
 
   List<Widget> tabList = [];
 
@@ -78,7 +78,7 @@ class ComicDetailState extends State<ComicDetailScene>
 
   Future<void> _fetchData() async {
     try {
-      var responseJson = await Request.get(url: 'home_comic_overview');
+      var responseJson = await Request.get(url: 'home_comic_overview', params: {});
       comicOverview = ComicOverview.fromJson(responseJson);
 
       await Future.delayed(Duration(milliseconds: 2000), () {
@@ -180,7 +180,7 @@ class ComicDetailState extends State<ComicDetailScene>
                             SliverToBoxAdapter(
                               child: Container(
                                 color: Colors.white,
-                                child: ComicDetailOverViewView(comicOverview),
+                                child: ComicDetailOverViewView(comicOverview!),
                               ),
                             ),
                             SliverPersistentHeader(
@@ -219,9 +219,9 @@ class ComicDetailState extends State<ComicDetailScene>
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   _SliverAppBarDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
   });
 
   final double minHeight;
@@ -232,7 +232,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => minHeight;
 
   @override
-  double get maxExtent => math.max((minHeight ?? kToolbarHeight), minExtent);
+  double get maxExtent => math.max((minHeight), minExtent);
 
   @override
   Widget build(

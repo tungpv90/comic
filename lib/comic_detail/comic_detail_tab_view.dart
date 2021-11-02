@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class ComicDetailTabView extends StatelessWidget {
   final String text;

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tianyue/app/root_scene.dart';
-import 'package:tianyue/app/skip_down_time.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/app/root_scene.dart';
+import 'package:comic/app/skip_down_time.dart';
+import 'package:comic/public.dart';
 
 class SplashScene extends StatefulWidget {
-  SplashScene({Key key}) : super(key: key);
+  SplashScene({required Key key}) : super(key: key);
 
   @override
   SplashSceneState createState() {

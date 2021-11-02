@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/stream/BlocProvider.dart';
-import 'package:tianyue/stream/CounterWidget.dart';
-import 'package:tianyue/stream/CounterStream.dart';
-import 'package:tianyue/stream/IncrementBloc.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/stream/BlocProvider.dart';
+import 'package:comic/stream/CounterWidget.dart';
+import 'package:comic/stream/CounterStream.dart';
+import 'package:comic/stream/IncrementBloc.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class BlocScene extends StatelessWidget {
   @override

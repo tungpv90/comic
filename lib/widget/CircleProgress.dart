@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 class CircleProgress extends StatelessWidget {
   CircleProgress(
       {this.stokeWidth = 2.0,
-      @required this.radius,
-      @required this.colors,
+      required this.radius,
+      required this.colors,
       this.backgroundColor = const Color(0xFFEEEEEE),
       this.totalAngle = 2 * pi,
-      this.value});
+      this.value = 0});
 
   ///粗细
   final double stokeWidth;
@@ -51,11 +51,11 @@ class _CircleProgressPainter extends CustomPainter {
   _CircleProgressPainter(
       {this.stokeWidth: 10.0,
       this.backgroundColor = const Color(0xFFEEEEEE),
-      this.radius,
+      this.radius = 0,
       this.total = 2 * pi,
-      @required this.colors,
+      required this.colors,
       this.stops,
-      this.value});
+      this.value = 0});
 
   final double stokeWidth;
   final double value;
@@ -63,7 +63,7 @@ class _CircleProgressPainter extends CustomPainter {
   final List<Color> colors;
   final double total;
   final double radius;
-  final List<double> stops;
+  final List<double>? stops;
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 import 'home_banner.dart';
 import 'home_model.dart';
@@ -67,7 +67,7 @@ class HomeListViewState extends State<HomeListView>
         default:
           break;
       }
-      var responseJson = await Request.get(url: action);
+      var responseJson = await Request.get(url: action, params: {});
       List moduleData = responseJson['module'];
       List<HomeModule> modules = [];
       moduleData.forEach((data) {
@@ -97,6 +97,9 @@ class HomeListViewState extends State<HomeListView>
         break;
       case 4:
         card = NovelNormalCard(module);
+        break;
+      default:
+        card = NovelFourGridView(module);
         break;
     }
     return card;

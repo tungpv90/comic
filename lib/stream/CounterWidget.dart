@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/stream/BlocProvider.dart';
-import 'package:tianyue/stream/IncrementBloc.dart';
+import 'package:comic/stream/BlocProvider.dart';
+import 'package:comic/stream/IncrementBloc.dart';
 
 class CounterWidget extends StatelessWidget {
   @override

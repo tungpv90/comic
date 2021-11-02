@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class LoadMoreView extends StatefulWidget {
   final String loadString;

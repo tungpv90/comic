@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 import 'battery_view.dart';
 
 class ReaderOverlayer extends StatelessWidget {
@@ -9,7 +9,7 @@ class ReaderOverlayer extends StatelessWidget {
   final int page;
   final double topSafeHeight;
 
-  ReaderOverlayer({this.article, this.page, this.topSafeHeight});
+  ReaderOverlayer({required this.article, required this.page, required this.topSafeHeight});
 
   @override
   Widget build(BuildContext context) {

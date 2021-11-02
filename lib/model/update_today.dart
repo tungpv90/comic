@@ -1,8 +1,8 @@
 class UpdateToday {
-  String cover;
-  String title;
-  String author;
-  String newUpdate;
+  String cover = '';
+  String title = '';
+  String author = '';
+  String newUpdate = '';
 
   UpdateToday.fromJson(Map data) {
     cover = data['cover'];

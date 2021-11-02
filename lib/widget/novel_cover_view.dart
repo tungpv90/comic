@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:tianyue/model/novel.dart';
-import 'package:tianyue/widget/novel_cover_image.dart';
-import 'package:tianyue/app/app_navigator.dart';
+import 'package:comic/model/novel.dart';
+import 'package:comic/widget/novel_cover_image.dart';
+import 'package:comic/app/app_navigator.dart';
 
 class NovelCoverView extends StatelessWidget {
   final Novel novel;

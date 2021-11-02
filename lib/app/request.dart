@@ -5,16 +5,16 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:tianyue/utility/tian_yue_cache_manager.dart';
+import 'package:comic/utility/tian_yue_cache_manager.dart';
 
 class Request {
   static const String baseUrl = 'http://192.168.4.32/';
 
-  static Future<dynamic> get({String url, Map params}) async {
+  static Future<dynamic> get({required String url, required Map params}) async {
     return Request.mock(url: url, params: params);
   }
 
-  static Future<dynamic> getByHttpClient({String url, Map params}) async {
+  static Future<dynamic> getByHttpClient({required String url, required Map params}) async {
     // 实例化
     HttpClient httpClient = new HttpClient();
     // 打开Http连接
@@ -31,18 +31,18 @@ class Request {
     return json.decode(responseBody);
   }
 
-  static Future<dynamic> getByDio({String url, Map params}) async {
+  static Future<dynamic> getByDio({required String url, required Map params}) async {
     var dio = Request.createDio();
     Response<String> response = await dio.get("/get_home_page/section_data");
     var data = response.data;
-    return json.decode(data);
+    return json.decode(data!);
   }
 
-  static Future<dynamic> post({String url, Map params}) async {
+  static Future<dynamic> post({required String url, required Map params}) async {
     return Request.mock(url: url, params: params);
   }
 
-  static Future<dynamic> mock({String url, Map params}) async {
+  static Future<dynamic> mock({required String url, required Map params}) async {
     var responseStr = await rootBundle.loadString('mock/$url.json');
     var responseJson = json.decode(responseStr);
     return responseJson['data'];
@@ -53,7 +53,7 @@ class Request {
       baseUrl: "http://192.168.43.131:8080",
       connectTimeout: 10000,
       receiveTimeout: 10000,
-      contentType: ContentType.json,
+      contentType: "ContentType.json",
     );
     var dio = Dio(options);
     dio.interceptors.add(CacheInterceptor(dio));
@@ -63,37 +63,37 @@ class Request {
 
 class CacheInterceptor extends InterceptorsWrapper {
 
-  Dio dio;
+  Dio dio = Dio();
 
   CacheInterceptor(Dio dio){
     this.dio = dio;
   }
   
   @override
-  onRequest(RequestOptions options) async {
-    FileInfo info = await TianYueCacheManager().getFileFromCache(options.uri.toString());
+  onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    FileInfo? info = await TianYueCacheManager().getFileFromCache(options.uri.toString());
     if (info != null) {
       print("使用缓存" + options.uri.toString());
       String data = await info.file.readAsString();
-      return dio.resolve(data);
+      return handler.resolve(Response(requestOptions:options,data:data));
     }
-    print("无缓存" + options.uri.toString());
-    return options;
+    return handler.resolve(Response(requestOptions:options,data:"Error"));
   }
 
   @override
-  onResponse(Response response) async {
+  onResponse(Response response, ResponseInterceptorHandler handler) async {
     // 这里服务器返回的不是String,而是map<String,dynamic>
     // 如果是string,则不需要如此转换
     //String body = json.encode(response.data);
     var data = response.data;
-    await TianYueCacheManager().putStringFile(response.request.uri.toString(), data);
+    await TianYueCacheManager().putFile(response.requestOptions.uri.toString(), data);
     print("网络数据：" + data);
-    return response;
+    return super.onResponse(response, handler);
   }
 
   @override
-  onError(DioError e) async {
-    print('NetError: $e');
+  onError(DioError err, ErrorInterceptorHandler handler) async {
+    print('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
+    return super.onError(err, handler);
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:tianyue/app/ty_color.dart';
+import 'package:comic/app/ty_color.dart';
 
 class CodeButton extends StatelessWidget {
   final VoidCallback onPressed;
   final int coldDownSeconds;
 
-  CodeButton({@required this.onPressed, @required this.coldDownSeconds});
+  CodeButton({required this.onPressed, required this.coldDownSeconds});
 
   @override
   Widget build(BuildContext context) {

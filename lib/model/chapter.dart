@@ -1,8 +1,8 @@
 
 class Chapter {
-  int id;
-  String title;
-  int index;
+  int id = -1;
+  String title = '';
+  int index = 0;
 
   Chapter.fromJson(Map data) {
     id = data['id'];

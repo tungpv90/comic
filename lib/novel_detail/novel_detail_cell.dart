@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class NovelDetailCell extends StatelessWidget {
   final String iconName;
@@ -8,7 +8,7 @@ class NovelDetailCell extends StatelessWidget {
   final String subtitle;
   final Widget attachedWidget;
 
-  NovelDetailCell({this.iconName, this.title, this.subtitle, this.attachedWidget});
+  NovelDetailCell({required this.iconName, required this.title, required this.subtitle, required this.attachedWidget});
 
   @override
   Widget build(BuildContext context) {

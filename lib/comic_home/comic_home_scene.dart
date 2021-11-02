@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tianyue/comic_home/comic_banner.dart';
-import 'package:tianyue/comic_home/comic_block_view.dart';
-import 'package:tianyue/comic_home/comic_recommend_everyday_view.dart';
-import 'package:tianyue/comic_home/comic_update_today_view.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/comic_home/comic_banner.dart';
+import 'package:comic/comic_home/comic_block_view.dart';
+import 'package:comic/comic_home/comic_recommend_everyday_view.dart';
+import 'package:comic/comic_home/comic_update_today_view.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class ComicHomeScene extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class ComicHomeScene extends StatefulWidget {
 }
 
 class ComicHomeState extends State<ComicHomeScene> with AutomaticKeepAliveClientMixin{
-  Comic comic;
+  Comic? comic;
 
   /// banner
   List<String> banner = [];
@@ -23,7 +23,7 @@ class ComicHomeState extends State<ComicHomeScene> with AutomaticKeepAliveClient
   List<ComicBlock> blockList = [];
 
   /// 每日一推
-  RecommendEveryDay recommendEveryDay;
+  late RecommendEveryDay recommendEveryDay;
 
   /// 今日我更新
   List<UpdateToday> updateTodayList = [];
@@ -74,7 +74,7 @@ class ComicHomeState extends State<ComicHomeScene> with AutomaticKeepAliveClient
         pageState = PageState.Content;
       });
 
-      var responseJson = await Request.get(url: 'home_comic');
+      var responseJson = await Request.get(url: 'home_comic', params: {});
       banner.clear();
       responseJson["banner"].forEach((data) {
         banner.add(data);
@@ -173,6 +173,9 @@ class ComicHomeState extends State<ComicHomeScene> with AutomaticKeepAliveClient
         break;
       case 3:
         widget = ComicUpdateTodayView(updateTodayList);
+        break;
+      default:
+        widget = ComicBanner(banner);
         break;
     }
     return widget;

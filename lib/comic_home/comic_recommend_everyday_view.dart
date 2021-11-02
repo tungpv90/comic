@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/comic_home/comic_block_header_view.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/comic_home/comic_block_header_view.dart';
+import 'package:comic/public.dart';
 
 class ComicRecommendEveryDayView extends StatelessWidget {
   final RecommendEveryDay recommendEveryDay;

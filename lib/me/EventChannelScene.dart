@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class EventChannelScene extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _EventChannelSceneState extends State<EventChannelScene>
   bool isDataReady = false;
   PageState pageState = PageState.Loading;
   static const stream = EventChannel('com.yourcompany.eventchannelsample/stream');
-  StreamSubscription _timerSubscription;
+  late StreamSubscription _timerSubscription;
 
   int _timer = 0;
 

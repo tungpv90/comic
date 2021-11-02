@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class MapScene extends StatefulWidget {
 

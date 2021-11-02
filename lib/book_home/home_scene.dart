@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 import 'home_list_view.dart';
 
@@ -11,7 +11,7 @@ class HomeScene extends StatefulWidget {
 
 class HomeSceneState extends State<HomeScene>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   @override
   void initState() {

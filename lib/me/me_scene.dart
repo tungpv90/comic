@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tianyue/me/EventChannelScene.dart';
-import 'package:tianyue/me/PaintWidgetScene.dart';
-import 'package:tianyue/me/ScrollDemoScene.dart';
-import 'package:tianyue/me/map_scene.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/stream/BlocScene.dart';
-import 'package:tianyue/stream/StreamCounterScene.dart';
+import 'package:comic/me/eventChannelScene.dart';
+import 'package:comic/me/PaintWidgetScene.dart';
+import 'package:comic/me/ScrollDemoScene.dart';
+import 'package:comic/me/map_scene.dart';
+import 'package:comic/public.dart';
+import 'package:comic/stream/BlocScene.dart';
+import 'package:comic/stream/StreamCounterScene.dart';
 
 import 'me_cell.dart';
 import 'me_header.dart';

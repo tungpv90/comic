@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/CircleProgress.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/CircleProgress.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class PaintWidgetScene extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class PaintWidgetScene extends StatefulWidget {
 
 class _PaintWidgetSceneState extends State<PaintWidgetScene>
     with TickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   bool isDataReady = false;
   PageState pageState = PageState.Loading;
@@ -62,9 +62,9 @@ class _PaintWidgetSceneState extends State<PaintWidgetScene>
         child: Stack(alignment: Alignment.center, children: <Widget>[
           AnimatedBuilder(
             animation: _animationController,
-            builder: (BuildContext context, Widget child) {
+            builder: (BuildContext context, Widget? child) {
               return CircleProgress(
-                colors: [Colors.orange[700], Colors.orange[200]],
+                colors: [Colors.orange, Colors.deepOrange],
                 radius: 30.0,
                 stokeWidth: 4.0,
                 value: _animationController.value,

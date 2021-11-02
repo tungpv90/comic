@@ -1,13 +1,15 @@
 import 'dart:convert';
 
-import 'package:tianyue/utility/event_bus.dart';
-import 'package:tianyue/global.dart';
+import 'package:comic/public.dart';
+import 'package:comic/utility/event_bus.dart';
+import 'package:comic/global.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const String EventUserLogin = 'EventUserLogin';
 const String EventUserLogout = 'EventUserLogout';
 
 class UserManager {
-  static UserManager _instance;
+  static UserManager _instance = UserManager.instance;
   static UserManager get instance {
     if (_instance == null) {
       _instance = UserManager();
@@ -16,13 +18,14 @@ class UserManager {
     return _instance;
   }
 
-  User user;
+  late User user;
   static User get currentUser {
     return UserManager.instance.user;
   }
 
-  logout() {
-    this.user = null;
+  logout() async {
+    //this.user = ;
+
     preferences.remove('user');
     eventBus.emit(EventUserLogout);
   }
@@ -39,8 +42,8 @@ class UserManager {
     return user != null;
   }
 
-  loadUserFromLocal() {
-    String userJson = preferences.getString('user');
+  loadUserFromLocal() async {
+    String? userJson = preferences.getString('user');
     if (userJson != null) {
       user = User.fromJson(json.decode(userJson));
     }
@@ -53,14 +56,14 @@ class UserManager {
 }
 
 class User {
-  String token;
-  int id;
-  String nickname;
-  String avatarUrl;
-  bool isVip;
-  double wealth;
-  int coupon;
-  int monthlyTicket;
+  String token = '';
+  int id = 0;
+  String nickname = '';
+  String avatarUrl = '';
+  bool isVip = false;
+  double wealth = 0;
+  int coupon = 0;
+  int monthlyTicket = 0;
 
   User.fromJson(Map json) {
     token = json['token'];
@@ -79,7 +82,7 @@ class User {
       'id': id,
       'nickname': nickname,
       'avatar': avatarUrl,
-      'is_vip': isVip ? 1 : 0,
+      'is_vip': isVip == true ? 1 : 0,
       'wealth': wealth,
       'coupon': coupon,
       'ticket': monthlyTicket,

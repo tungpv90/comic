@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 import 'novel_detail_header.dart';
 import 'novel_summary_view.dart';
@@ -22,7 +22,7 @@ class NovelDetailScene extends StatefulWidget {
 }
 
 class NovelDetailSceneState extends State<NovelDetailScene> {
-  Novel novel;
+  late Novel novel;
   List<Novel> recommendNovels = [];
   List<NovelComment> comments = [];
   ScrollController scrollController = ScrollController();
@@ -255,6 +255,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> {
                         iconName: 'img/detail_chapter.png',
                         title: '目录',
                         subtitle: '共${novel.chapterCount}章',
+                        attachedWidget: widget,
                       ),
                       buildTags(),
                       SizedBox(height: 10),

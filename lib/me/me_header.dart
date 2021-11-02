@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class MeHeader extends StatelessWidget {
   @override
@@ -23,7 +23,8 @@ class MeHeader extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               radius: 40,
-              backgroundImage: user?.avatarUrl != null ? CachedNetworkImageProvider(user.avatarUrl) : AssetImage('img/placeholder_avatar.png'),
+
+              backgroundImage: user.avatarUrl.isNotEmpty ? CachedNetworkImageProvider(user.avatarUrl) : AssetImage('img/placeholder_avatar.png') as ImageProvider,
             ),
             SizedBox(width: 25),
             Expanded(

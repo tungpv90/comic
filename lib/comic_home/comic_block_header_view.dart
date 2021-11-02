@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class ComicBlockHeaderView extends StatelessWidget {
   final String titleName;
@@ -32,6 +32,12 @@ class ComicBlockHeaderView extends StatelessWidget {
       case Constant.updateToday:
         widget = Image.asset(
           "img/comic_update_today_header.png",
+          width: width,
+        );
+        break;
+      default:
+        widget = Image.asset(
+          "img/comic_block_header.png",
           width: width,
         );
         break;

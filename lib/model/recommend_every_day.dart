@@ -1,7 +1,7 @@
 class RecommendEveryDay {
-  String cover;
-  String title;
-  String author;
+  String cover = '';
+  String title = '';
+  String author = '';
 
   RecommendEveryDay.fromJson(Map data) {
     cover = data['cover'];

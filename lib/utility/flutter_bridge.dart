@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:tianyue/utility/toast.dart';
+import 'package:comic/utility/toast.dart';
 
 class FlutterBridge{
 

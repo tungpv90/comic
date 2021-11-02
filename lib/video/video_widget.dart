@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/video/video_detail_scene.dart';
+import 'package:comic/public.dart';
+import 'package:comic/video/video_detail_scene.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoWidget extends StatefulWidget {
@@ -12,11 +12,11 @@ class VideoWidget extends StatefulWidget {
   final int positionTag;
 
   VideoWidget(this.url,
-      {Key key,
+      {Key? key,
       this.previewImgUrl: '',
       this.showProgressBar = true,
       this.showProgressText = true,
-      this.positionTag})
+      this.positionTag = 0})
       : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class VideoWidget extends StatefulWidget {
 }
 
 class VideoWidgetState extends State<VideoWidget> {
-  VideoPlayerController _controller;
+  late VideoPlayerController _controller;
   bool _hideActionButton = true;
   bool videoPrepared = false; //视频是否初始化
 

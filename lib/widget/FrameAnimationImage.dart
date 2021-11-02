@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 // 帧动画Image
 class FrameAnimationImage extends StatefulWidget {
@@ -15,8 +15,8 @@ class FrameAnimationImage extends StatefulWidget {
 
 class FrameAnimationImageState extends State<FrameAnimationImage>
     with SingleTickerProviderStateMixin {
-  Animation<double> _animation;
-  AnimationController _controller;
+  late Animation<double> _animation;
+  late AnimationController _controller;
   int interval = 200;
   List<String> _assetList = [
     'img/loading_1.png',

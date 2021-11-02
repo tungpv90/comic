@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 import 'article_provider.dart';
 import 'reader_utils.dart';
@@ -18,7 +18,7 @@ enum PageJumpType { stay, firstPage, lastPage }
 class ReaderScene extends StatefulWidget {
   final int articleId;
 
-  ReaderScene({this.articleId});
+  ReaderScene({required this.articleId});
 
   @override
   ReaderSceneState createState() => ReaderSceneState();
@@ -32,9 +32,9 @@ class ReaderSceneState extends State<ReaderScene>{
 
   double topSafeHeight = 0;
 
-  Article preArticle;
-  Article currentArticle;
-  Article nextArticle;
+  late Article preArticle;
+  late Article currentArticle;
+  late Article nextArticle;
 
   List<Chapter> chapters = [];
 
@@ -66,7 +66,7 @@ class ReaderSceneState extends State<ReaderScene>{
       pageState = PageState.Content;
     });
 
-    List<dynamic> chaptersResponse = await Request.get(url: 'catalog');
+    List<dynamic> chaptersResponse = await Request.get(url: 'catalog', params: {});
     chaptersResponse.forEach((data) {
       chapters.add(Chapter.fromJson(data));
     });
@@ -79,12 +79,12 @@ class ReaderSceneState extends State<ReaderScene>{
     if (currentArticle.preArticleId > 0) {
       preArticle = await fetchArticle(currentArticle.preArticleId);
     } else {
-      preArticle = null;
+      //preArticle = null;
     }
     if (currentArticle.nextArticleId > 0) {
       nextArticle = await fetchArticle(currentArticle.nextArticleId);
     } else {
-      nextArticle = null;
+      //nextArticle = null;
     }
     if (jumpType == PageJumpType.firstPage) {
       pageIndex = 0;
@@ -114,7 +114,7 @@ class ReaderSceneState extends State<ReaderScene>{
 
       preArticle = currentArticle;
       currentArticle = nextArticle;
-      nextArticle = null;
+      //nextArticle = null;
       pageIndex = 0;
       pageController.jumpToPage(preArticle.pageCount);
       fetchNextArticle(currentArticle.nextArticleId);
@@ -125,7 +125,7 @@ class ReaderSceneState extends State<ReaderScene>{
 
       nextArticle = currentArticle;
       currentArticle = preArticle;
-      preArticle = null;
+      //preArticle = null;
       pageIndex = currentArticle.pageCount - 1;
       pageController.jumpToPage(currentArticle.pageCount - 1);
       fetchPreviousArticle(currentArticle.preArticleId);

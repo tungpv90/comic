@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/FrameAnimationImage.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/FrameAnimationImage.dart';
 
 class LoadingIndicator extends StatefulWidget {
   final PageState pageState;
 
-  final Retry retry;
+  final Retry? retry;
 
   LoadingIndicator(this.pageState, {this.retry});
 
@@ -30,7 +30,7 @@ class LoadingIndicatorState extends State<LoadingIndicator> {
             child: FrameAnimationImage(),
             onTap: () {
               if (this.widget.retry != null) {
-                this.widget.retry();
+                this.widget.retry!();
               }
             });
         break;
@@ -38,7 +38,7 @@ class LoadingIndicatorState extends State<LoadingIndicator> {
         widget = GestureDetector(
             onTap: () {
               if (this.widget.retry != null) {
-                this.widget.retry();
+                this.widget.retry!();
               }
             },
             child: Container(
@@ -57,7 +57,7 @@ class LoadingIndicatorState extends State<LoadingIndicator> {
         widget = GestureDetector(
             onTap: () {
               if (this.widget.retry != null) {
-                this.widget.retry();
+                this.widget.retry!();
               }
             },
             child: Container(
@@ -76,7 +76,7 @@ class LoadingIndicatorState extends State<LoadingIndicator> {
         widget = GestureDetector(
             onTap: () {
               if (this.widget.retry != null) {
-                this.widget.retry();
+                this.widget.retry!();
               }
             },
             child: Container(

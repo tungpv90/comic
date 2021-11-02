@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class HomeBanner extends StatelessWidget {
   final List urls;
@@ -16,6 +16,10 @@ class HomeBanner extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: CarouselSlider(
+        options: CarouselOptions(
+            aspectRatio: 2,
+            autoPlayInterval: const Duration(seconds: 5),
+            autoPlay: true),
         items: urls.map((url) {
           return Builder(
             builder: (BuildContext context) {
@@ -30,9 +34,6 @@ class HomeBanner extends StatelessWidget {
             },
           );
         }).toList(),
-        aspectRatio: 2,
-        autoPlayInterval: const Duration(seconds: 5),
-        autoPlay: true,
       ),
     );
   }

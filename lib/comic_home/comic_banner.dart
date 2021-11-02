@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class ComicBanner extends StatefulWidget {
   final List<String> imgList;
@@ -25,18 +25,24 @@ class ComicBannerState extends State<ComicBanner> with AutomaticKeepAliveClientM
         onTap: () {
           AppNavigator.pushComicDetail(context, "");
         },
-        child: new Stack(
+        child: Stack(
           children: <Widget>[
             Container(
               color: Colors.white,
               child: CarouselSlider(
-                viewportFraction: 1.0,
-                aspectRatio: 2.0,
-                autoPlay: true,
-                pauseAutoPlayOnTouch:Duration(milliseconds: 400),
-                enlargeCenterPage: false,
+
+                options: CarouselOptions(viewportFraction: 1.0,
+                  aspectRatio: 2.0,
+                  autoPlay: true,
+                  pauseAutoPlayOnTouch:true,
+                  enlargeCenterPage: false,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  },),
                 items: map<Widget>(
-                  this.widget.imgList,
+                  widget.imgList,
                   (index, url) {
                     return Image.network(
                       url,
@@ -46,11 +52,7 @@ class ComicBannerState extends State<ComicBanner> with AutomaticKeepAliveClientM
                     );
                   },
                 ),
-                onPageChanged: (index) {
-                  setState(() {
-                    _current = index;
-                  });
-                },
+
               ),
             ),
             Positioned(

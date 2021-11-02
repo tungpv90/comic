@@ -1,7 +1,7 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/video/video_widget.dart';
+import 'package:comic/public.dart';
+import 'package:comic/video/video_widget.dart';
 
 class VideoDetailScene extends StatefulWidget {
 
@@ -24,11 +24,14 @@ class VideoDetailState extends State<VideoDetailScene> {
   void initState() {
     super.initState();
     _controller.addListener(() {
+      /*
       if (_controller.page.floor() == _controller.page) {
         eventBus.emit(
             EventVideoPlayPosition + _controller.page.floor().toString(),
             _controller.page.floor());
       }
+
+       */
     });
   }
 

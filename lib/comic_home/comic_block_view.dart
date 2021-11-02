@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/comic_home/comic_block_item_view.dart';
-import 'package:tianyue/comic_home/comic_block_header_view.dart';
+import 'package:comic/public.dart';
+import 'package:comic/comic_home/comic_block_item_view.dart';
+import 'package:comic/comic_home/comic_block_header_view.dart';
 
 class ComicBlockView extends StatelessWidget {
   final List<ComicBlock> blockList;

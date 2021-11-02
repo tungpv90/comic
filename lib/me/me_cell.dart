@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class MeCell extends StatelessWidget {
   final VoidCallback onPressed;
   final String iconName;
   final String title;
 
-  MeCell({this.title, this.iconName, this.onPressed});
+  MeCell({required this.title, required this.iconName, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

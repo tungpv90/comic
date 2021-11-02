@@ -1,11 +1,11 @@
 class ComicOverview {
-  String cover;
-  String title;
-  String score;
-  String tag;
-  String author;
-  String popularity;
-  String monthTicket;
+  String cover = '';
+  String title= '';
+  String score= '';
+  String tag= '';
+  String author= '';
+  String popularity= '';
+  String monthTicket= '';
 
   ComicOverview.fromJson(Map data) {
     cover = data['cover'];

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/comic_home/comic_block_item_view.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/comic_home/comic_block_item_view.dart';
+import 'package:comic/public.dart';
 
 class ComicDetailTabOne extends StatelessWidget {
   final ComicDetail comicDetail;

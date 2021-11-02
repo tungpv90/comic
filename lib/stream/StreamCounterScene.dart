@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/stream/CounterStream.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/stream/CounterStream.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class StreamCounterScene extends StatefulWidget {
   @override
@@ -60,7 +60,7 @@ class _StreamCounterSceneState extends State<StreamCounterScene> {
             ),
             Text(
               '$_number',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.headline1,
             ),
           ],
         ),
@@ -101,11 +101,11 @@ class _StreamCounterSceneState extends State<StreamCounterScene> {
     // 3,4,5,6 map
     // 5,6     where
     // 100,5,6 mergeWith
-    Observable.range(1, 4)
-        .map((val) => val + 2)
-        .where((val) => val > 4)
+    Stream.fromIterable([1, 2, 3, 4])
+        .map((event) => event + 2)
+        .where((event) => event > 4)
         .distinct()
-        .mergeWith([Observable.just(100)])
+        .mergeWith([Stream.value(100)])
         .doOnData((_) => print('next data'))
         .doOnDone(() => print("all done--完成！"))
         .listen((val) => print('Observable收到数据:' + val.toString()));

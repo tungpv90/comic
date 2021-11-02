@@ -4,16 +4,16 @@ import 'update_today.dart';
 
 class Comic{
   /// banner
-  List<String> banner;
+  late List<String> banner;
 
   /// 无良推荐
-  List<ComicBlock> blockList;
+  late List<ComicBlock> blockList;
 
   /// 每日一推
-  RecommendEveryDay recommendEveryDay;
+  late RecommendEveryDay recommendEveryDay;
 
   /// 今日我更新
-  List<UpdateToday> updateTodayList;
+  late List<UpdateToday> updateTodayList;
 
   Comic.fromJson(Map data) {
     banner = data['banner'];

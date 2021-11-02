@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/loading_indicator.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 
 class ComicReaderScene extends StatefulWidget {
   final String url;
@@ -36,7 +38,7 @@ class ComicReaderState extends State<ComicReaderScene> with RouteAware {
   @override
   void didPush() {
     super.didPush();
-    Timer(Duration(milliseconds: 1000), () {
+    Timer(const Duration(milliseconds: 1000), () {
       Screen.updateStatusBarStyle(SystemUiOverlayStyle.dark);
     });
   }
@@ -44,7 +46,7 @@ class ComicReaderState extends State<ComicReaderScene> with RouteAware {
   Future<void> fetchData() async {
     try {
       imageList.clear();
-      var responseJson = await Request.get(url: 'home_comic_image_list');
+      var responseJson = await Request.get(url: 'home_comic_image_list', params: {});
       responseJson["comicPictureList"].forEach((data) {
         imageList.add(data);
       });
@@ -74,6 +76,32 @@ class ComicReaderState extends State<ComicReaderScene> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+        child: PhotoViewGallery.builder(
+          scrollPhysics: const BouncingScrollPhysics(),
+          allowImplicitScrolling: true,
+          builder: (BuildContext context, int index) {
+            return PhotoViewGalleryPageOptions(
+              imageProvider: NetworkImage (imageList[index]),
+              initialScale: PhotoViewComputedScale.contained * 0.8,
+            );
+          },
+          itemCount: imageList.length,
+          loadingBuilder: (context, event) => Center(
+            child: Container(
+              width: 20.0,
+              height: 20.0,
+              child: CircularProgressIndicator(
+                value:  0,
+              ),
+            ),
+          ),
+        )
+    );
+  }
+  /*
+  @override
+  Widget build(BuildContext context) {
     if (!isDataReady) {
       return LoadingIndicator(
         pageState,
@@ -82,7 +110,7 @@ class ComicReaderState extends State<ComicReaderScene> with RouteAware {
     }
     return Container(
         color: TYColor.white,
-        child: new Stack(
+        child: Stack(
           children: <Widget>[
             ListView.builder(
               physics: BouncingScrollPhysics(),
@@ -97,4 +125,6 @@ class ComicReaderState extends State<ComicReaderScene> with RouteAware {
           ],
         ));
   }
+
+   */
 }

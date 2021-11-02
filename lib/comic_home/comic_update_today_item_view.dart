@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 class ComicUpdateTodayItemView extends StatelessWidget {
   final UpdateToday comicItem;

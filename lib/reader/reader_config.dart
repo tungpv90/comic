@@ -1,6 +1,6 @@
 class ReaderConfig {
 
-  static ReaderConfig _instance;
+  static late ReaderConfig _instance;
   static ReaderConfig get instance {
     if (_instance == null) {
       _instance = ReaderConfig();

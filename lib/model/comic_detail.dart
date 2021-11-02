@@ -1,7 +1,7 @@
-import 'package:tianyue/model/comic_block.dart';
+import 'package:comic/model/comic_block.dart';
 
 class ComicDetail {
-  String detail;
+  String detail = '';
 
   //骚年们都在看
   List<ComicBlock> recommendList = [];

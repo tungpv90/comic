@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
-import 'package:tianyue/book_home/home_scene.dart';
-import 'package:tianyue/comic_home/comic_home_scene.dart';
-import 'package:tianyue/me/me_scene.dart';
-import 'package:tianyue/video/video_scene.dart';
-import 'package:tianyue/widget/loading_indicator.dart';
+import 'package:comic/book_home/home_scene.dart';
+import 'package:comic/comic_home/comic_home_scene.dart';
+import 'package:comic/me/me_scene.dart';
+import 'package:comic/video/video_scene.dart';
+import 'package:comic/widget/loading_indicator.dart';
 
 class RootScene extends StatefulWidget {
   @override
@@ -73,8 +73,9 @@ class RootSceneState extends State<RootScene> {
     });
   }
 
-  Future<bool> _onWillPop() {
-    return showDialog(
+  Future<bool> _onWillPop() async {
+
+    return await showDialog(
       context: context,
       builder: (context) => new AlertDialog(
         title: new Text('提示'),

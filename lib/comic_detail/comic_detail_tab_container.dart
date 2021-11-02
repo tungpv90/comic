@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/comic_detail/comic_detail_tab_one.dart';
-import 'package:tianyue/comic_detail/comic_detail_tab_three.dart';
-import 'package:tianyue/comic_detail/comic_detail_tab_two.dart';
-import 'package:tianyue/public.dart';
+import 'package:comic/comic_detail/comic_detail_tab_one.dart';
+import 'package:comic/comic_detail/comic_detail_tab_three.dart';
+import 'package:comic/comic_detail/comic_detail_tab_two.dart';
+import 'package:comic/public.dart';
 
 class ComicDetailTabContainer extends StatefulWidget {
   final TabController tabController;
 
   ComicDetailTabContainer(
-      {Key key, @required this.tabController})
+      {Key? key, required this.tabController})
       : super(key: key);
 
   @override
@@ -17,8 +17,8 @@ class ComicDetailTabContainer extends StatefulWidget {
 }
 
 class ComicDetailTabState extends State<ComicDetailTabContainer> {
-  ComicDetail comicDetail;
-  ComicChapter comicChapter;
+  ComicDetail? comicDetail;
+  ComicChapter? comicChapter;
 
   /// 详情数据是否准备完毕
   bool _comicDetailReady = false;
@@ -35,7 +35,7 @@ class ComicDetailTabState extends State<ComicDetailTabContainer> {
 
   Future<void> fetchDetailData() async {
     try {
-      var responseJson = await Request.get(url: 'home_comic_detail');
+      var responseJson = await Request.get(url: 'home_comic_detail', params: {});
       comicDetail = ComicDetail.fromJson(responseJson);
       setState(() {
         _comicDetailReady = true;
@@ -47,7 +47,7 @@ class ComicDetailTabState extends State<ComicDetailTabContainer> {
 
   Future<void> fetchChapterData() async {
     try {
-      var responseJson = await Request.get(url: 'home_comic_chapter');
+      var responseJson = await Request.get(url: 'home_comic_chapter', params: {});
       comicChapter = ComicChapter.fromJson(responseJson);
       setState(() {
         _comicChapterReady = true;
@@ -64,8 +64,8 @@ class ComicDetailTabState extends State<ComicDetailTabContainer> {
     }
     return TabBarView(
       children: <Widget>[
-        ComicDetailTabOne(comicDetail),
-        ComicChapterTabTwo(comicChapter),
+        ComicDetailTabOne(comicDetail!),
+        ComicChapterTabTwo(comicChapter!),
         ComicCommentTabThree(),
       ],
       controller: widget.tabController,

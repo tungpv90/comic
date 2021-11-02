@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tianyue/comic_detail/comic_detail_scene.dart';
-import 'package:tianyue/comic_detail/comic_reader_scene.dart';
-import 'package:tianyue/me/login_scene.dart';
-import 'package:tianyue/me/web_scene.dart';
-import 'package:tianyue/novel_detail/novel_detail_scene.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/reader/reader_scene.dart';
-import 'package:tianyue/video/video_detail_scene.dart';
+import 'package:comic/comic_detail/comic_detail_scene.dart';
+import 'package:comic/comic_detail/comic_reader_scene.dart';
+import 'package:comic/me/login_scene.dart';
+import 'package:comic/me/web_scene.dart';
+import 'package:comic/novel_detail/novel_detail_scene.dart';
+import 'package:comic/public.dart';
+import 'package:comic/reader/reader_scene.dart';
+import 'package:comic/video/video_detail_scene.dart';
 
 class AppNavigator {
   static push(BuildContext context, Widget scene) {

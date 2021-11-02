@@ -1,9 +1,9 @@
-import 'package:tianyue/model/comic_block.dart';
+import 'package:comic/model/comic_block.dart';
 
 class ComicChapter {
-  String updateTime;
+  String updateTime = '';
   List<String> categoryList = [];
-  String actionName;
+  String actionName ='';
   //骚年们都在看
   List<ComicBlock> recommendList = [];
 

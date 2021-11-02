@@ -13,7 +13,7 @@ class NovelNormalCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var novels = cardInfo.books;
     if (novels.length < 3) {
-      return null;
+      return Container();
     }
 
     List<Widget> children = [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tianyue/public.dart';
+import 'package:comic/public.dart';
 
 import 'home_model.dart';
 

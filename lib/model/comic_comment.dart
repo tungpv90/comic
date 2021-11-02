@@ -1,8 +1,8 @@
 class ComicComment {
-  String avatar;
-  String userName;
-  String time;
-  String content;
+  String avatar = '';
+  String userName = '';
+  String time = '';
+  String content = '';
 
   ComicComment.fromJson(Map data) {
     avatar = data['avatar'];

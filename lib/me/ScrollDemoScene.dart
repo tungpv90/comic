@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tianyue/public.dart';
-import 'package:tianyue/widget/load_more_view.dart';
+import 'package:comic/public.dart';
+import 'package:comic/widget/load_more_view.dart';
 
 class ScrollDemoScene extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _ScrollDemoSceneState extends State<ScrollDemoScene> {
   ScrollController _scrollController = new ScrollController();
   int _pageIndex = 1;
   String _loadString = "正在加载更多...";
-  bool _hasMore;
+  late bool _hasMore;
 
   @override
   void initState() {
